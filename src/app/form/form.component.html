@@ -5,15 +5,27 @@
       <option value="Mme">Mme</option>
     </select><br>
     <label for="firstName">Prénom:</label><br>
-    <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName"><br>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" (input)="validateFirstName()"><br>
+    <div *ngIf="invalidFirstName">
+        Le prénom est incorrect.
+    </div>
     <label for="lastName">Nom:</label><br>
-    <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName"><br>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" (input)="validateLastName()"><br>
+    <div *ngIf="invalidLastName">
+        Le nom de famille est incorrect.
+    </div>
     <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" [(ngModel)]="user.email"><br>
+    <input type="email" id="email" name="email" [(ngModel)]="user.email" (input)="validateEmail()"><br>
+    <div *ngIf="invalidEmail">
+        L'adresse mail est incorrecte.
+    </div>
     <label for="address">Adresse:</label><br>
     <input type="text" id="address" name="address" [(ngModel)]="user.address"><br>
     <label for="postalCode">Code postal:</label><br>
-    <input type="text" id="postalCode" name="postalCode" [(ngModel)]="user.postalCode"><br>
+    <input type="text" id="postalCode" name="postalCode" [(ngModel)]="user.postalCode" (input)="validatePostalCode()"><br>
+    <div *ngIf="invalidPostalCode">
+        Le code postal est incorrect.
+    </div>
     <label for="city">Ville:</label><br>
     <input type="text" id="city" name="city" [(ngModel)]="user.city"><br>
     <label for="country">Pays:</label><br>
@@ -27,7 +39,7 @@
     <input type="text" id="login" name="login" [(ngModel)]="user.login"><br>
     <label for="password">Mot de passe:</label><br>
     <input type="password" id="password" name="password" [(ngModel)]="user.password"><br><br>
-    <button type="submit">Envoyer</button>
+    <button type="submit" (click)="check()">Envoyer</button>
 </form>
 
 <ng-container *ngIf="display_info">
