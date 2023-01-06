@@ -1,0 +1,39 @@
+<form (ngSubmit)="onSubmit()">
+    <label for="title">Civilité:</label><br>
+    <select id="title" name="title" [(ngModel)]="user.title">
+      <option value="Mr">M.</option>
+      <option value="Mme">Mme</option>
+    </select><br>
+    <label for="firstName">Prénom:</label><br>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName"><br>
+    <label for="lastName">Nom:</label><br>
+    <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" [(ngModel)]="user.email"><br>
+    <label for="address">Adresse:</label><br>
+    <input type="text" id="address" name="address" [(ngModel)]="user.address"><br>
+    <label for="postalCode">Code postal:</label><br>
+    <input type="text" id="postalCode" name="postalCode" [(ngModel)]="user.postalCode"><br>
+    <label for="city">Ville:</label><br>
+    <input type="text" id="city" name="city" [(ngModel)]="user.city"><br>
+    <label for="country">Pays:</label><br>
+    <input type="text" id="country" name="country" [(ngModel)]="user.country"><br>
+    <label for="phone">Téléphone:</label><br>
+    <input type="text" id="phone" name="phone" [(ngModel)]="user.phone" (input)="validatePhoneNumber()"><br>
+    <div *ngIf="invalidPhoneNumber">
+        Le numéro de téléphone est incorrect.
+    </div>
+    <label for="login">Identifiant:</label><br>
+    <input type="text" id="login" name="login" [(ngModel)]="user.login"><br>
+    <label for="password">Mot de passe:</label><br>
+    <input type="password" id="password" name="password" [(ngModel)]="user.password"><br><br>
+    <button type="submit">Envoyer</button>
+</form>
+
+<ng-container *ngIf="display_info">
+    <app-recap 
+    [title]=user.title [lastName]=user.lastName [firstName]=user.firstName 
+    [adress]=user.address [postalCode]=user.postalCode [email]=user.email
+    [city]=user.city [login]=user.login [phone]=user.phone [country]=user.country>
+    </app-recap>
+</ng-container>
